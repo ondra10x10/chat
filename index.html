@@ -1,73 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retro Chatting Website</title>
+    <title>Multi-User Chat</title>
     <style>
-        body {
-            font-family: 'Courier New', Courier, monospace;
-            background-color: #f0f0f0;
-            color: #333;
-            text-align: center;
-        }
-        .chat-container {
-            width: 80%;
-            margin: auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .chat-box {
-            border: 1px solid #ccc;
-            height: 300px;
-            overflow-y: scroll;
-            padding: 10px;
-            background: #e8e8e8;
-            margin-bottom: 10px;
-        }
-        .message-input {
-            width: 70%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .send-button {
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            background-color: #28a745;
-            color: white;
-            cursor: pointer;
-        }
-        .send-button:hover {
-            background-color: #218838;
-        }
+        body { font-family: Arial, sans-serif; }
+        #chat { border: 1px solid #ccc; height: 300px; overflow-y: scroll; }
+        #messages { margin: 0; padding: 10px; }
+        #sendArea { display: flex; }
+        #username { margin-right: 10px; }
     </style>
 </head>
 <body>
-    <div class="chat-container">
-        <h1>Retro Chat Room</h1>
-        <div class="chat-box" id="chat-box"></div>
-        <input type="text" id="message-input" class="message-input" placeholder="Type your message...">
-        <button id="send-button" class="send-button">Send</button>
+    <h1>Multi-User Chat</h1>
+    <div>
+        <input type="text" id="username" placeholder="Enter your username" />
     </div>
-    <script>
-        const chatBox = document.getElementById('chat-box');
-        const messageInput = document.getElementById('message-input');
-        const sendButton = document.getElementById('send-button');
+    <div id="chat">
+        <ul id="messages"></ul>
+    </div>
+    <div id="sendArea">
+        <input type="text" id="messageInput" placeholder="Type a message..." />
+        <button onclick="sendMessage()">Send</button>
+    </div>
 
-        sendButton.addEventListener('click', function() {
-            const message = messageInput.value;
-            if (message) {
-                const messageElement = document.createElement('div');
-                messageElement.textContent = message;
-                chatBox.appendChild(messageElement);
+    <script>
+        function sendMessage() {
+            const username = document.getElementById('username').value;
+            const messageInput = document.getElementById('messageInput');
+
+            if (username && messageInput.value) {
+                const li = document.createElement('li');
+                li.textContent = username + ': ' + messageInput.value;
+                document.getElementById('messages').appendChild(li);
                 messageInput.value = '';
-                chatBox.scrollTop = chatBox.scrollHeight;  // Auto scroll to the bottom
+                document.getElementById('chat').scrollTop = document.getElementById('chat').scrollHeight;
+            } else {
+                alert('Please enter a username and a message.');
             }
-        });
+        }
     </script>
 </body>
 </html>
