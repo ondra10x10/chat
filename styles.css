@@ -1,0 +1,39 @@
+.button {
+  background-color: #ffcc00;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background-color: #e68a00;
+  color: white;
+}
+
+body {
+  background-color: #ffe0b2;
+  font-family: 'Courier New', monospace;
+  color: #5d4037;
+  text-align: center;
+}
+
+h1 {
+  color: #6a1b9a;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+p {
+  font-size: 18px;
+  margin: 20px;
+}
+
+.container {
+  border: 5px dashed #6a1b9a;
+  padding: 20px;
+  margin: 50px;
+}
